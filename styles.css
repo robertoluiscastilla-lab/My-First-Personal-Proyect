@@ -1,0 +1,76 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    ". header header ."
+    "main main main main"
+    "img img img img";
+
+  row-gap: 200px;
+  background-color: #90e0ef;
+}
+
+/*
+Basics of the css, body and defaults.
+*/
+
+header {
+  margin: 40px;
+  grid-area: header;
+  text-align: center;
+  border: 20px solid #00b4d8;
+  border-radius: 40px;
+  background-color: #00b4d8;
+}
+
+h1 {
+  font-size: 80px;
+  color: black;
+}
+
+/*
+The part of the header.
+*/
+
+main {
+  margin-top: -120px;
+  grid-area: main;
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search-bar {
+  width: 1100px;
+  padding: 25px 15px;
+  border-radius: 40px;
+  border: 6px solid black;
+  outline: none;
+  font-size: 30px;
+}
+
+.search-bar:focus {
+  border: 6px solid #0077b6;
+  border-radius: 40px;
+  outline: none;
+}
+
+/*
+The search bar part.
+*/
+
+.third-container {
+  grid-area: img;
+  text-align: center;
+}
