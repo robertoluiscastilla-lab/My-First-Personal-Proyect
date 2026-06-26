@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Searcher</title>
     <link rel="stylesheet" href="styles.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="script.js" defer></script>
   </head>
 
@@ -14,18 +22,20 @@
     </header>
 
     <main class="main">
-      <input
-        class="search-bar"
-        type="search"
-        placeholder="Enter the movie name"
-      />
+      <div class="search-n-x">
+        <input
+          class="search-bar"
+          type="search"
+          placeholder="Enter the movie name"
+        /><span class="clear-button">&times;</span>
+      </div>
     </main>
 
     <div class="third-container">
-      <div class="top-container">
-        <div>TOP</div>
-        1<img /> 2<img /> 3<img />
-      </div>
+      <div class="top">TOP</div>
+      1<img class="top img1" /> 2<img class="top-img img2" /> 3<img
+        class="top-img img2"
+      />
     </div>
   </body>
 </html>

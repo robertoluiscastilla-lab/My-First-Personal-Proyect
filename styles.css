@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   line-height: 1.5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -19,6 +19,13 @@ body {
 
   row-gap: 200px;
   background-color: #90e0ef;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
 }
 
 /*
@@ -53,7 +60,7 @@ main {
 
 .search-bar {
   width: 1100px;
-  padding: 25px 15px;
+  padding: 25px 80px 25px 25px;
   border-radius: 40px;
   border: 6px solid black;
   outline: none;
@@ -66,11 +73,48 @@ main {
   outline: none;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.search-n-x {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.clear-button {
+  font-size: 40px;
+  position: absolute;
+  right: 250px;
+  margin-top: -10px;
+  color: #0077b6;
+}
+
+.clear-button:hover {
+  color: red;
+}
+
 /*
 The search bar part.
 */
 
 .third-container {
   grid-area: img;
-  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 100px;
+  margin-top: -70px;
 }
+
+.top {
+  font-size: 1em;
+}
+
+/*
+This is the top with the three movies part.
+*/
