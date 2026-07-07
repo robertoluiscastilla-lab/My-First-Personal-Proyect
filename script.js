@@ -1,19 +1,54 @@
+//Declarations from the html
+
+const clearBtn = document.querySelector(".clear-button");
+const searchBar = document.querySelector(".search-bar");
+const top_images = document.querySelector(".top-images");
+const img1 = document.querySelector(".img1");
+const img2 = document.querySelector(".img2");
+const img3 = document.querySelector(".img3");
+
+//Other declaration
+
+const base_url = "https://image.tmdb.org/t/p/w780";
+
+//Fetching the API
 import { API_KEY } from "./config.js";
-
-console.log("Api key cargo ?", API_KEY);
-
-if (!API_KEY) {
-  console.error("¡ALERTA! La API_KEY está vacía o indefinida.");
-}
 
 const options = {
   method: "GET",
   headers: { accept: "application/json" },
 };
 
-const url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=Batman`;
+async function getTopMovies() {
+  try {
+    const fetched = await fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`,
+      options,
+    );
 
-fetch(url, options)
-  .then((res) => res.json())
-  .then((res) => console.log(res))
-  .catch((err) => console.error(err));
+    if (!fetched.ok) {
+      throw new Error(`Error in the petition: ${fetched.status}`);
+    }
+
+    const data = await fetched.json();
+
+    console.log(data);
+
+    img1.src = base_url + data.results[0].poster_path;
+    img2.src = base_url + data.results[1].poster_path;
+    img3.src = base_url + data.results[2].poster_path;
+
+    return data.results;
+  } catch (error) {
+    console.error("Problems during the launch fase: ", error.message);
+  }
+}
+
+getTopMovies();
+
+//Event Listeners
+
+clearBtn.addEventListener("click", () => {
+  searchBar.value = "";
+  searchBar.focus();
+});
