@@ -113,13 +113,36 @@ The search bar part.
 }
 
 .top {
-  font-size: 1em;
+  text-align: center;
+  font-size: 0.74em;
+  position: absolute;
+  left: 30px;
+  top: -100px;
+  transform: rotate(-15deg);
+  display: inline-block;
 }
 
 .top-img {
   border: 3px solid black;
   width: 100px;
   height: 100px;
+}
+
+.tops {
+  position: relative;
+}
+
+.one {
+  position: absolute;
+  top: -10px;
+  left: -40px;
+}
+
+.two,
+.three {
+  position: absolute;
+  top: -10px;
+  left: -65px;
 }
 
 /*
