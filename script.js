@@ -9,6 +9,7 @@ const img3 = document.querySelector(".img3");
 const header = document.querySelector(".header");
 const main = document.querySelector("main");
 const third_container = document.querySelector(".third-container");
+const body = document.querySelector("body");
 
 //Other declaration
 
@@ -83,7 +84,7 @@ async function findMovies(movieName) {
   }
 }
 
-findMovies("Obsession");
+findMovies("Obs");
 
 //Event Listeners
 
@@ -94,10 +95,47 @@ clearBtn.addEventListener("click", () => {
 
 searchBar.addEventListener("keydown", async (e) => {
   if (e.key == "Enter") {
-    clearingScreen();
-
     let typed = e.target.value;
 
+    clearingScreen();
+
     const movies = await findMovies(typed);
+
+    body.classList.add("after-searched");
+
+    body.innerHTML = `
+
+    <header class="header">
+    <h1 class="title">Results</h1>
+    </header>
+
+    <div class="results-container"> </div>
+    `;
+
+    const results_container = document.querySelector(".results-container");
+
+    movies.forEach((movie) => {
+      const movieTitle = movie.title;
+      const movieImg = base_url + movie.poster_path;
+
+      results_container.innerHTML += `
+      <div class="movie-data"><img class="final-img" src=${movieImg}><span class="moved">${movieTitle}</span></div>
+      `;
+    });
   }
 });
+
+/*
+
+   <div class="movie-data"><img src=${img1.src} class="test-img"><span class="moved">sdfkjasd flkajsdflajsd falksdf jaldkfj asjdflk</span></div>
+
+    <div class="movie-data"><img src=${img1.src} class="test-img"><span class="moved">asdfadsdfasdf dasfasdf asdfasdfdSecond content</span></div>
+
+    <div class="movie-data">Third content</div>
+
+    <div class="movie-data">Fourth content</div>
+
+    </div>
+
+
+*/

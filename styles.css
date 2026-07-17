@@ -148,3 +148,48 @@ The search bar part.
 /*
 This is the top with the three movies part.
 */
+
+body.after-searched {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  line-height: 1.5;
+  background-color: #90e0ef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.results-container {
+  margin-top: -200px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.movie-data {
+  display: flex;
+  width: 600px;
+  height: 150px;
+  border: 4px solid black;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.final-img {
+  border: 3px solid black;
+  width: 100px;
+  height: 100px;
+}
+
+.moved {
+  position: relative;
+  bottom: -20px;
+  right: -80px;
+  font-size: 1.5em;
+}
+
+/*
+After search elements
+*/
