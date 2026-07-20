@@ -13,17 +13,21 @@ const body = document.querySelector("body");
 
 //Other declaration
 
-const base_url = "https://image.tmdb.org/t/p/w780";
+let base_url = "https://image.tmdb.org/t/p/w780";
+let originalLanguage = "";
+let originalTitle = "";
+let overview = "";
+let popularity = "";
+let releaseDate = "";
+let title = "";
+let voteAvarage = "";
+let voteCount = "";
+let finalPosterPath = "";
 
 //Clearing function
 
 function clearingScreen() {
-  const containers = [header, main, third_container];
-
-  containers.forEach((container) => {
-    container.innerHTML = "";
-    container.style.display = "none";
-  });
+  body.innerHTML = "";
 }
 
 //Fetching the API
@@ -117,25 +121,89 @@ searchBar.addEventListener("keydown", async (e) => {
     movies.forEach((movie) => {
       const movieTitle = movie.title;
       const movieImg = base_url + movie.poster_path;
+      const movieDiv = document.createElement("div");
 
-      results_container.innerHTML += `
-      <div class="movie-data"><img class="final-img" src=${movieImg}><span class="moved">${movieTitle}</span></div>
+      movieDiv.classList.add("movie-data");
+
+      movieDiv.innerHTML = `
+      <img class="final-img" src=${movieImg}><span class="moved">${movieTitle}</span>
       `;
+
+      results_container.appendChild(movieDiv);
+
+      movieDiv.addEventListener("click", () => {
+        originalLanguage = movie.original_language;
+        originalTitle = movie.original_title;
+        overview = movie.overview;
+        popularity = movie.popularity;
+        releaseDate = movie.release_date;
+        title = movieTitle;
+        voteAvarage = movie.vote_average;
+        voteCount = movie.vote_count;
+        finalPosterPath = movie.poster_path;
+
+        clearingScreen();
+
+        body.classList.remove("after-searched");
+        body.classList.add("finalDisplay");
+
+        body.innerHTML = `
+        <img class="lastDisplay" src="${base_url + finalPosterPath}">
+        <div class="final-container">
+
+          <div class="info-div">
+          <h1 class="info-title">Movie Info</h1>
+          </div>
+
+          <div>
+          <h2>Original Languaje</h2>
+          <span>${originalLanguage}</span>
+          </div>
+
+          <div>
+          <h2>Original Title</h2>
+          <span>${originalTitle}</span>
+          </div>
+
+          <div>
+          <h2>Overview</h2>
+          <span>${overview}</span>
+          </div>
+
+          <div>
+          <h2>Popularity</h2>
+          <span>${popularity}</span>
+          </div>
+
+          <div>
+          <h2>Release Date</h2>
+          <span>${releaseDate}</span>
+          </div>
+
+          <div>
+          <h2>Title</h2>
+          <span>${title}</span>
+          </div>
+
+          <div>
+          <h2>Vote Avarage</h2>
+          <span>${voteAvarage}</span>
+          </div>
+
+          <div>
+          <h2>Vote Count</h2>
+          <span>${voteCount}</span>
+          </div>
+
+        </div>
+        `;
+      });
     });
   }
 });
 
 /*
 
-   <div class="movie-data"><img src=${img1.src} class="test-img"><span class="moved">sdfkjasd flkajsdflajsd falksdf jaldkfj asjdflk</span></div>
-
-    <div class="movie-data"><img src=${img1.src} class="test-img"><span class="moved">asdfadsdfasdf dasfasdf asdfasdfdSecond content</span></div>
-
-    <div class="movie-data">Third content</div>
-
-    <div class="movie-data">Fourth content</div>
-
-    </div>
 
 
 */
